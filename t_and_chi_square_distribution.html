@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Distribution Explorer</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    h2 {
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 1s ease-out forwards 0.5s;
+      text-align: center;
+      font-weight: 400;
+    }
+    #controls {
+      margin: 30px auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards 1s;
+    }
+    .btn {
+      margin: 5px;
+      padding: 10px 20px;
+      background: #1f2833;
+      color: #66fcf1;
+      border: 1px solid #45a29e;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #45a29e;
+      color: #0b0c10;
+    }
+    .slider-container {
+      margin: 15px;
+    }
+    input[type=range] {
+      width: 300px;
+      accent-color: #66fcf1;
+    }
+    #plot {
+      width: 90%;
+      height: 500px;
+      margin: 30px auto;
+      opacity: 0;
+      transform: scale(0.98);
+      animation: fadeInScale 1s ease-out forwards 1.5s;
+    }
+    #description {
+      width: 80%;
+      margin: 20px auto;
+      font-size: 1rem;
+      text-align: center;
+      color: #c5c6c7;
+      min-height: 50px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1s ease-out forwards 2s;
+    }
+    #footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+      margin: 40px auto;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards 3s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>t 分布與 χ² 分布互動式視覺化</h2>
+  <div id="controls">
+    <button class="btn" onclick="setDist('t')">t 分布</button>
+    <button class="btn" onclick="setDist('chi')">χ² 分布</button>
+    <div class="slider-container">
+      自由度 df = <span id="df-value">7</span><br>
+      <input type="range" min="1" max="30" value="7" id="df-slider" oninput="updateDist()">
+    </div>
+  </div>
+  <div id="plot"></div>
+  <div id="description"></div>
+  <div id="footer">Crafted by ChatGPT, faithfully overengineered for kitten 😏</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.4/jstat.min.js"></script>
+  <script>
+    let currentDist = 'chi';
+    const alpha = 0.05;
+
+    function chiSquarePDF(x, df) {
+      if (x < 0) return 0;
+      const gamma = t => Math.sqrt(2 * Math.PI / t) * Math.pow((t / Math.E), t);
+      return Math.pow(x, df/2 - 1) * Math.exp(-x / 2) / (Math.pow(2, df/2) * gamma(df/2));
+    }
+
+    function tPDF(x, df) {
+      const gamma = t => Math.sqrt(2 * Math.PI / t) * Math.pow((t / Math.E), t);
+      const B = gamma((df+1)/2) / (Math.sqrt(df*Math.PI) * gamma(df/2));
+      return B * Math.pow(1 + x*x/df, -(df+1)/2);
+    }
+
+    function generateData(df, distType) {
+      const x = [];
+      const y = [];
+      const step = 0.1;
+      const range = distType === 'chi' ? 32 : 5;
+      for (let i = distType === 'chi' ? 0 : -range; i <= range; i += step) {
+        x.push(i);
+        y.push(distType === 'chi' ? chiSquarePDF(i, df) : tPDF(i, df));
+      }
+      return {x, y};
+    }
+
+    function getCriticalValue(df, distType) {
+      if (distType === 't') {
+        return jStat.studentt.inv(1 - alpha, df);
+      } else {
+        return jStat.chisquare.inv(1 - alpha, df);
+      }
+    }
+
+    function setDist(type) {
+      currentDist = type;
+      updateDist();
+    }
+
+    function updateDist() {
+      const df = parseInt(document.getElementById("df-slider").value);
+      document.getElementById("df-value").textContent = df;
+      const data = generateData(df, currentDist);
+      const criticalX = getCriticalValue(df, currentDist);
+      const criticalY = currentDist === 'chi' ? chiSquarePDF(criticalX, df) : tPDF(criticalX, df);
+
+      const layout = {
+        title: currentDist === 'chi' ? `χ² 分布 (df=${df})` : `t 分布 (df=${df})`,
+        xaxis: { title: currentDist === 'chi' ? 'x (≥ 0)' : 'x' },
+        yaxis: { title: 'Density' },
+        plot_bgcolor: "#0b0c10",
+        paper_bgcolor: "#0b0c10",
+        font: { color: "#ffffff" },
+        margin: { t: 40, l: 50, r: 30, b: 50 },
+        shapes: [{
+          type: "line",
+          x0: criticalX, x1: criticalX,
+          y0: 0, y1: criticalY,
+          line: { color: "#f67280", width: 2, dash: "dot" },
+          opacity: 0.8
+        }],
+        annotations: [{
+          x: criticalX, y: criticalY,
+          text: `α = ${alpha}`,
+          showarrow: true,
+          arrowhead: 7,
+          ax: 20,
+          ay: -40,
+          font: { color: "#f67280" },
+          opacity: 0.8
+        }]
+      };
+
+      const trace = {
+        x: data.x, y: data.y,
+        type: 'scatter', mode: 'lines',
+        line: { color: '#66fcf1' }
+      };
+
+      Plotly.newPlot('plot', [trace], layout, {responsive: true});
+      updateDescription(df);
+    }
+
+    function updateDescription(df) {
+      const descBox = document.getElementById("description");
+      let text = "";
+      if (currentDist === 't') {
+        if (df <= 2) text = "df 很小的時候，t 分布尾巴比較厚，代表極端值的機率較大。";
+        else if (df < 10) text = "df 適中時，t 分布還是比常態分布稍微厚尾，但已趨近對稱。";
+        else text = "df 越大，t 分布就越接近常態分布 N(0,1)。";
+      } else {
+        if (df <= 2) text = "df 很小的 χ² 分布非常右偏，且密度集中在 0 附近。";
+        else if (df < 10) text = "df 適中時，χ² 分布仍右偏，但分布逐漸向右展開。";
+        else text = "df 越大，χ² 分布會越接近常態分布，但仍為偏態。";
+      }
+      descBox.textContent = text;
+    }
+
+    updateDist();
+  </script>
+</body>
+</html>
