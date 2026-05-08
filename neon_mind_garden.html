@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Mind Garden 🐱</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: black;
+      font-family: Inter, sans-serif;
+    }
+
+    .weird-bg {
+      background:
+        radial-gradient(circle at center, rgba(236,72,153,0.22), transparent 30%),
+        radial-gradient(circle at top left, rgba(168,85,247,0.28), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,0.18), transparent 35%),
+        #05010a;
+      animation: pulseBg 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseBg {
+      from {
+        filter: hue-rotate(0deg) brightness(1);
+      }
+
+      to {
+        filter: hue-rotate(25deg) brightness(1.15);
+      }
+    }
+
+    .thought-creature {
+      position: absolute;
+      pointer-events: none;
+      animation: floatCreature 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(255,255,255,0.45));
+      z-index: 3;
+    }
+
+    @keyframes floatCreature {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-18px) rotate(8deg);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .quote-transition {
+      transition: all 0.45s ease;
+    }
+
+    .hallucination {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .hallucination.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="text-white transition-all duration-1000">
+
+  <div id="backgroundLayer" class="fixed inset-0 z-0 transition-all duration-1000"></div>
+
+  <div id="hallucinations">
+    <div class="hallucination text-fuchsia-400/20 text-6xl top-20 left-[10%] rotate-[-8deg] blur-[1px]" id="hallucination1">
+      WHAT IF THE THOUGHTS ARE REAL
+    </div>
+
+    <div class="hallucination text-cyan-300/10 text-5xl top-[45%] right-[8%]" id="hallucination2">
+      🪼
+    </div>
+
+    <div class="hallucination text-emerald-300/10 text-4xl bottom-[18%] left-[12%]" id="hallucination3">
+      reality integrity compromised
+    </div>
+  </div>
+
+  <div class="relative z-10">
+
+    <header class="px-8 pt-10 pb-6 border-b border-white/10 glass">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+
+        <div>
+          <h1 class="text-5xl md:text-6xl font-black tracking-tight">
+            Neon Mind Garden
+          </h1>
+
+          <p class="mt-3 text-white/70 max-w-2xl text-lg">
+            一個給過度思考生物、咖啡幽靈，以及開著六個分頁硬撐人生的生科學生居住的數位棲息地。
+          </p>
+        </div>
+
+        <button
+          id="weirdButton"
+          class="px-6 py-3 rounded-2xl bg-white text-black font-bold hover:scale-105 transition-all shadow-2xl"
+        >
+          Enter Weird Mode 🌚
+        </button>
+      </div>
+    </header>
+
+    <main class="px-8 py-10">
+
+      <section class="grid lg:grid-cols-2 gap-8 items-center">
+
+        <div class="space-y-6">
+
+          <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm">
+            <span class="animate-pulse">●</span>
+            偵測到腦部活動
+          </div>
+
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+            歡迎來到思想會長成發光生物的地方。
+          </h2>
+
+          <p class="text-white/70 text-lg leading-relaxed">
+            下面每個 chamber 都像小型數位生態箱。去 hover 它們、戳它們，假裝你的焦慮已經被轉換成可再生能源。
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+
+            <button
+              id="feedButton"
+              class="px-6 py-3 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-semibold hover:scale-105 hover:rotate-1 transition-all shadow-[0_0_40px_rgba(168,85,247,0.4)]"
+            >
+              餵食思想體 🧠
+            </button>
+
+            <button
+              id="panicButton"
+              class="px-6 py-3 rounded-2xl border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
+            >
+              晚點再崩潰 🤯
+            </button>
+          </div>
+        </div>
+
+        <div id="reactorArea" class="relative h-[420px] flex items-center justify-center overflow-hidden">
+
+          <div class="absolute w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-pulse"></div>
+          <div class="absolute w-64 h-64 bg-fuchsia-500/20 rounded-full blur-3xl"></div>
+
+          <div class="relative w-[320px] h-[320px] rounded-[3rem] glass shadow-2xl overflow-hidden hover:rotate-2 transition-transform duration-500">
+
+            <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.1),transparent)]"></div>
+
+            <div class="p-8 flex flex-col h-full justify-between relative z-10">
+
+              <div>
+                <div class="text-6xl">🫀</div>
+
+                <h3 class="mt-6 text-3xl font-bold">
+                  認知反應爐
+                </h3>
+
+                <p class="mt-3 text-white/70 leading-relaxed">
+                  目前狀態：平均每小時生產三次存在危機
+                </p>
+              </div>
+
+              <div class="space-y-3">
+
+                <div>
+                  <div class="flex justify-between text-sm text-white/60 mb-1">
+                    <span>焦慮燃料</span>
+                    <span id="reactorValue">91%</span>
+                  </div>
+
+                  <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                    <div id="reactorBar" class="h-full bg-gradient-to-r from-pink-500 to-orange-400 transition-all duration-700" style="width: 91%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-sm text-white/60 mb-1">
+                    <span>生物學知識</span>
+                    <span id="bioValue">84%</span>
+                  </div>
+
+                  <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                    <div id="bioBar" class="h-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-700" style="width: 84%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20">
+
+        <div class="flex items-center justify-between mb-8 flex-wrap gap-4">
+          <h2 class="text-3xl font-bold">互動艙室</h2>
+          <div class="text-white/50 text-sm">Hover 卡片以提升神經閃爍效果 ✨</div>
+        </div>
+
+        <div id="chambers" class="grid md:grid-cols-2 xl:grid-cols-4 gap-6"></div>
+      </section>
+
+      <section id="terminalSection" class="mt-20 grid lg:grid-cols-[1.2fr_0.8fr] gap-8">
+
+        <div class="rounded-[2rem] glass p-8">
+
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-sm text-cyan-300 tracking-widest mb-2">
+                神經檢測終端
+              </div>
+
+              <h2 id="terminalTitle" class="text-3xl font-bold">
+                等待思想體連線中...
+              </h2>
+            </div>
+
+            <div id="terminalEmoji" class="text-4xl">🧠</div>
+          </div>
+
+          <p id="terminalDesc" class="text-white/70 leading-relaxed text-lg">
+            選擇一個艙室開始檢測。那些小型數位生物正在等待。🧪
+          </p>
+
+          <div id="statsArea" class="grid md:grid-cols-3 gap-4 mt-8"></div>
+
+          <div class="mt-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+            <div class="text-emerald-300 text-sm mb-4 tracking-wide">
+              即時對話攔截
+            </div>
+
+            <div id="conversationArea" class="space-y-3 text-sm text-emerald-200/90 leading-relaxed"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-[2rem] glass p-6">
+            <div class="text-sm text-fuchsia-300 tracking-widest mb-4">
+              系統紀錄
+            </div>
+
+            <div id="logsArea" class="space-y-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20 rounded-[3rem] glass p-8 md:p-12 relative overflow-hidden">
+
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+
+        <div class="relative z-10 max-w-3xl">
+
+          <div class="inline-flex px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm mb-6">
+            傳輸紀錄 #404
+          </div>
+
+          <h2 id="quoteText" class="text-4xl md:text-5xl font-black leading-tight quote-transition fade-in"></h2>
+
+          <p id="quoteDesc" class="mt-6 text-lg text-white/70 leading-relaxed quote-transition fade-in"></p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+
+            <button
+              id="quoteButton"
+              class="px-6 py-3 rounded-2xl bg-white text-black font-bold hover:scale-105 hover:rotate-1 transition-all duration-300"
+            >
+              接受命運 🤷‍♀️
+            </button>
+
+            <button
+              id="scrollTopButton"
+              class="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300"
+            >
+              返回實驗室 🧪
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="px-8 py-8 text-white/40 text-sm border-t border-white/10 mt-16">
+      建造於好奇心、咖啡因，以及過度活躍的前額葉皮質之間。
+    </footer>
+  </div>
+
+  <script>
+    const thoughts = [
+      {
+        title: "Existential Aquarium",
+        desc: "漂浮在螢光液體中的微小思想體。最好在凌晨四點前阻止它們演化成哲學。",
+        emoji: "🪼",
+        color: "from-cyan-500 to-blue-700",
+        log: "水母思想體已組成工會，並開始要求情緒認同。",
+        stats: ["知覺化程度：74%", "過度思考：危急", "睡眠品質：已死亡"],
+        conversation: [
+          "🪼 水母思想體 #14：『如果意識只是穿著昂貴鞋子的化學反應呢？』 ",
+          "🪼 水族箱 AI：『請停止在午夜後餵食思想體。』 ",
+          "🪼 水質警告：哲學濃度過高。 "
+        ]
+      },
+      {
+        title: "Dopamine Forge",
+        desc: "一台把咖啡因與恐慌轉換成生產力的可疑裝置。",
+        emoji: "⚙️",
+        color: "from-orange-400 to-red-600",
+        log: "警告：使用者可能正試圖用三份試算表與純粹恐懼最佳化人生。",
+        stats: ["咖啡濃度：8mg/mL", "動機來源：人工", "鍵盤暴力值：升高"],
+        conversation: [
+          "⚙️ 生產力引擎：『使用者攝取的咖啡因已足以震穿牆壁。』 ",
+          "⚙️ 鍛造員工：『賀同志們，我們又把恐慌轉換成十二頁報告了。』 ",
+          "⚙️ 熱能警告：鍵盤溫度超出情緒安全標準。 "
+        ]
+      },
+      {
+        title: "Biology Dungeon",
+        desc: "粒線體需要繳房租，而轉錄因子天天發動幫派戰爭的地方。",
+        emoji: "🧬",
+        color: "from-emerald-400 to-teal-700",
+        log: "一個核糖體因無照合成蛋白質而遭到逮捕。",
+        stats: ["ATP 輸出：混亂", "突變機率：12%", "實驗室安全：理論存在"],
+        conversation: [
+          "🧬 第三號核糖體成立了地下蛋白質黑市。",
+          "🧬 粒線體工會：『我們要求更多葡萄糖與更少熬夜。』",
+          "🧬 CRISPR 模組不小心把辦公室植物編輯成哲學家。"
+        ]
+      },
+      {
+        title: "Sleep Debt Bank",
+        desc: "你那正在遠方微弱尖叫的晝夜節律。",
+        emoji: "🌙",
+        color: "from-violet-500 to-indigo-800",
+        log: "累積睡眠債務的利率仍在持續上升。",
+        stats: ["REM 週期：失蹤", "妄想程度：可接受", "褪黑激素經濟：崩潰中"],
+        conversation: [
+          "🌙 銀行通知：你的 REM 週期已遭到查封。",
+          "🌙 晝夜節律部門：『請停止與日出進行情緒談判。』",
+          "🌙 夢境伺服器：正在載入奇怪的象徵性胡言亂語。"
+        ]
+      }
+    ];
+
+    const quotes = [
+      {
+        quote: "「焦慮有時只是大腦把生存機制開到 debug mode。」",
+        desc: "系統偵測到過量的未來模擬。"
+      },
+      {
+        quote: "「睡眠不足會讓靈魂看起來像被拿去微波過。」",
+        desc: "REM 週期目前下落不明。"
+      },
+      {
+        quote: "「意識可能只是宇宙在偷偷觀察自己。」",
+        desc: "警告：哲學濃度過高。"
+      }
+    ];
+
+    let weirdMode = false;
+    let reactorPower = 91;
+    let bioKnowledge = 84;
+    let quoteIndex = 0;
+
+    const reactorBar = document.getElementById("reactorBar");
+    const reactorValue = document.getElementById("reactorValue");
+    const bioBar = document.getElementById("bioBar");
+    const bioValue = document.getElementById("bioValue");
+    const reactorArea = document.getElementById("reactorArea");
+    const logsArea = document.getElementById("logsArea");
+
+    function addLog(message) {
+      const div = document.createElement("div");
+      div.className = "rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white/70";
+      div.textContent = message;
+
+      logsArea.prepend(div);
+
+      while (logsArea.children.length > 5) {
+        logsArea.removeChild(logsArea.lastChild);
+      }
+    }
+
+    addLog("Neural activity stable.");
+    addLog("Caffeine reserves acceptable.");
+    addLog("Reality coherence questionable.");
+
+    function renderChambers() {
+      const container = document.getElementById("chambers");
+
+      thoughts.forEach((thought) => {
+        const card = document.createElement("div");
+
+        card.className = `
+          group relative rounded-[2rem] overflow-hidden border border-white/10
+          bg-white/5 backdrop-blur-lg hover:-translate-y-2
+          transition-all duration-500 cursor-pointer
+        `;
+
+        card.innerHTML = `
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${thought.color} transition-opacity duration-500"></div>
+
+          <div class="relative p-6 min-h-[260px] flex flex-col justify-between">
+            <div>
+              <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
+                ${thought.emoji}
+              </div>
+
+              <h3 class="text-2xl font-bold mb-3">
+                ${thought.title}
+              </h3>
+
+              <p class="text-white/70 leading-relaxed">
+                ${thought.desc}
+              </p>
+            </div>
+
+            <button class="mt-6 self-start px-4 py-2 rounded-xl bg-black/30 border border-white/10">
+              開啟 →
+            </button>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openThought(thought));
+
+        container.appendChild(card);
+      });
+    }
+
+    function openThought(thought) {
+      document.getElementById("terminalTitle").textContent = thought.title;
+      document.getElementById("terminalEmoji").textContent = thought.emoji;
+      document.getElementById("terminalDesc").textContent = thought.desc;
+
+      const statsArea = document.getElementById("statsArea");
+      statsArea.innerHTML = "";
+
+      thought.stats.forEach((stat, index) => {
+        const div = document.createElement("div");
+        div.className = "rounded-2xl bg-black/30 border border-white/10 p-4";
+
+        div.innerHTML = `
+          <div class="text-xs text-white/40 mb-2">
+            診斷項目 #${index + 1}
+          </div>
+          <div class="font-semibold text-white/90">
+            ${stat}
+          </div>
+        `;
+
+        statsArea.appendChild(div);
+      });
+
+      const conversationArea = document.getElementById("conversationArea");
+      conversationArea.innerHTML = "";
+
+      thought.conversation.forEach((line) => {
+        const div = document.createElement("div");
+        div.className = "border-l-2 border-emerald-400/20 pl-3 py-1";
+        div.textContent = line;
+        conversationArea.appendChild(div);
+      });
+
+      addLog(thought.log);
+
+      document.getElementById("terminalSection").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function spawnCreature() {
+      const creatures = ["🪼", "🧠", "👁️", "🫀", "🧬"];
+
+      const div = document.createElement("div");
+      div.className = "thought-creature";
+      div.textContent = creatures[Math.floor(Math.random() * creatures.length)];
+
+      div.style.left = Math.random() * 80 + "%";
+      div.style.top = Math.random() * 70 + "%";
+      div.style.fontSize = Math.random() * 2 + 2 + "rem";
+
+      reactorArea.appendChild(div);
+
+      reactorPower = Math.min(100, reactorPower + 2);
+      bioKnowledge = Math.min(100, bioKnowledge + 1);
+
+      reactorBar.style.width = reactorPower + "%";
+      bioBar.style.width = bioKnowledge + "%";
+
+      reactorValue.textContent = reactorPower + "%";
+      bioValue.textContent = bioKnowledge + "%";
+
+      addLog("思想體已成功孵化。");
+    }
+
+    function toggleWeirdMode() {
+      weirdMode = !weirdMode;
+
+      const bg = document.getElementById("backgroundLayer");
+      const button = document.getElementById("weirdButton");
+
+      if (weirdMode) {
+        bg.classList.add("weird-bg");
+
+        button.textContent = "Reality Corruption Active ⚡";
+        button.classList.remove("bg-white", "text-black");
+        button.classList.add("bg-fuchsia-500", "text-white");
+
+        document.querySelectorAll(".hallucination").forEach((el) => {
+          el.classList.add("active");
+        });
+
+        addLog("Weird Mode 已啟動。牆壁開始低語。");
+      } else {
+        bg.classList.remove("weird-bg");
+
+        button.textContent = "Enter Weird Mode 🌚";
+        button.classList.add("bg-white", "text-black");
+
+        document.querySelectorAll(".hallucination").forEach((el) => {
+          el.classList.remove("active");
+        });
+
+        addLog("現實穩定度已部分恢復。");
+      }
+    }
+
+    function nextQuote() {
+      const quote = document.getElementById("quoteText");
+      const desc = document.getElementById("quoteDesc");
+
+      quote.classList.remove("fade-in");
+      desc.classList.remove("fade-in");
+
+      quote.classList.add("fade-out");
+      desc.classList.add("fade-out");
+
+      setTimeout(() => {
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+
+        quote.textContent = quotes[quoteIndex].quote;
+        desc.textContent = quotes[quoteIndex].desc;
+
+        quote.classList.remove("fade-out");
+        desc.classList.remove("fade-out");
+
+        quote.classList.add("fade-in");
+        desc.classList.add("fade-in");
+      }, 300);
+    }
+
+    document.getElementById("feedButton").addEventListener("click", spawnCreature);
+    document.getElementById("weirdButton").addEventListener("click", toggleWeirdMode);
+    document.getElementById("quoteButton").addEventListener("click", nextQuote);
+
+    document.getElementById("scrollTopButton").addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    document.getElementById("panicButton").addEventListener("click", () => {
+      reactorPower = Math.max(20, reactorPower - 8);
+      reactorBar.style.width = reactorPower + "%";
+      reactorValue.textContent = reactorPower + "%";
+
+      addLog("系統已暫時延後精神崩潰。");
+    });
+
+    document.getElementById("quoteText").textContent = quotes[0].quote;
+    document.getElementById("quoteDesc").textContent = quotes[0].desc;
+
+    renderChambers();
+  </script>
+</body>
+</html>
