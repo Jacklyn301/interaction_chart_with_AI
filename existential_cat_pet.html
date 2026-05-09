@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>existential cat pet 🐱</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='black'/%3E%3Cpath d='M20 10c8 0 8 12 16 12s8-12 16-12' stroke='%238b5cf6' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M20 54c8 0 8-12 16-12s8 12 16 12' stroke='%2360a5fa' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M26 18l12 12M26 30l12-12M26 34l12 12M26 46l12-12' stroke='%23facc15' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #09090b;
+      color: #f4f4f5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .weather-layer {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: opacity .7s ease, filter .7s ease, transform .7s ease;
+    }
+
+    .weather-transition {
+      opacity: 0;
+      filter: blur(8px);
+      transform: scale(1.03);
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px 24px 120px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      font-size: 2.7rem;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      color: #a1a1aa;
+      margin-top: 8px;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: rgba(24,24,27,.76);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px;
+      padding: 24px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 30px rgba(0,0,0,.35);
+    }
+
+    .panel h2 {
+      margin-bottom: 16px;
+      font-size: 1.6rem;
+    }
+
+    .weather-buttons,
+    .actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .weather-buttons {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .actions {
+      grid-template-columns: repeat(2,1fr);
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      color: white;
+      transition: .25s ease;
+    }
+
+    .weather-btn,
+    .action-btn {
+      background: rgba(39,39,42,.7);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .weather-btn {
+      padding: 12px 16px;
+    }
+
+    .weather-btn:hover,
+    .action-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(63,63,70,.85);
+    }
+
+    .action-btn {
+      padding: 18px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .cat-zone {
+      height: 360px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(to bottom,#18181b,#27272a);
+    }
+
+    .cat {
+      font-size: 10rem;
+      user-select: none;
+      cursor: pointer;
+      transition: .3s ease;
+      position: relative;
+    }
+
+    .cat:hover {
+      transform: scale(1.05);
+    }
+
+    .hover-tip {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .75rem;
+      white-space: nowrap;
+      background: rgba(0,0,0,.65);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      padding: 6px 12px;
+      animation: pulse 2s infinite;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .cat:hover .hover-tip {
+      opacity: 1;
+    }
+
+    .zoomies {
+      animation: zoomies .28s infinite alternate;
+    }
+
+    .zoomies-banner {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(34,211,238,.08);
+      border: 1px solid rgba(34,211,238,.2);
+      color: #a5f3fc;
+      border-radius: 999px;
+      padding: 10px 16px;
+      animation: bounce 1s infinite;
+      display: none;
+      box-shadow: 0 0 20px rgba(34,211,238,.15);
+    }
+
+    .dialogue {
+      position: absolute;
+      top: 24px;
+      max-width: 280px;
+      background: rgba(24,24,27,.95);
+      border: 1px solid rgba(34,211,238,.25);
+      border-radius: 22px;
+      padding: 16px;
+      line-height: 1.6;
+      display: none;
+      cursor: pointer;
+      animation: fadeIn .3s ease;
+      box-shadow: 0 0 25px rgba(34,211,238,.12);
+    }
+
+    .dialogue small {
+      color: #67e8f9;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .stats {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bar {
+      margin-top: 6px;
+      height: 12px;
+      border-radius: 999px;
+      background: #27272a;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #d4d4d8;
+      transition: width .5s ease;
+    }
+
+    .thought-box {
+      min-height: 120px;
+      border-radius: 22px;
+      padding: 18px;
+      line-height: 1.8;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.06);
+      overflow: hidden;
+      position: relative;
+      transition: .7s ease;
+    }
+
+    .thought-hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      filter: blur(4px);
+    }
+
+    .scan-line {
+      position: absolute;
+      inset: 0 auto 0 -70px;
+      width: 70px;
+      background: linear-gradient(to right,transparent,rgba(34,211,238,.3),transparent);
+      transform: skewX(-20deg);
+      animation: scan .8s ease-out;
+    }
+
+    .alert {
+      margin-bottom: 20px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.2);
+      color: #fde68a;
+      animation: pulse 2s infinite;
+    }
+
+    .psychology {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      line-height: 1.7;
+      color: #d4d4d8;
+    }
+
+    .psychology span {
+      color: white;
+      font-weight: 600;
+    }
+
+    .particle {
+      position: absolute;
+    }
+
+    .rain-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,#0f172a,#082f49,#09090b);
+    }
+
+    .snow-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,#334155,#172554,#09090b);
+    }
+
+    .aurora-bg {
+      position: absolute;
+      inset: 0;
+      background: black;
+    }
+
+    .aurora-wave {
+      position: absolute;
+      inset: -20%;
+      background: linear-gradient(to right,rgba(34,211,238,.2),rgba(168,85,247,.2),rgba(74,222,128,.2));
+      filter: blur(90px);
+      animation: auroraShift 12s ease-in-out infinite;
+    }
+
+    @keyframes rainFall {
+      0% { transform: translateY(-120px) rotate(12deg); opacity: 0; }
+      15% { opacity: 1; }
+      100% { transform: translateY(120vh) rotate(12deg); opacity: 0; }
+    }
+
+    @keyframes snowFall {
+      0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+      20% { opacity: 1; }
+      50% { transform: translateY(50vh) translateX(20px); }
+      100% { transform: translateY(110vh) translateX(-20px); opacity: 0; }
+    }
+
+    @keyframes auroraShift {
+      0% { transform: translateX(-5%) rotate(6deg); }
+      50% { transform: translateX(5%) rotate(8deg) scale(1.05); }
+      100% { transform: translateX(-5%) rotate(6deg); }
+    }
+
+    @keyframes zoomies {
+      from { transform: translateX(-6px) rotate(-4deg); }
+      to { transform: translateX(6px) rotate(4deg); }
+    }
+
+    @keyframes pulse {
+      50% { opacity: .7; }
+    }
+
+    @keyframes bounce {
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+      30% { opacity: 1; }
+      to { transform: translateX(700%) skewX(-20deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-layer" id="weatherLayer"></div>
+
+  <div class="container">
+    <div id="alertBox"></div>
+
+    <div class="header">
+      <div>
+        <div class="title">存在主義危機貓咪模擬器</div>
+        <div class="subtitle">
+          一個由賽博咒語、半夜貓叫聲與精神狀態不穩定所驅動的單檔生命體
+        </div>
+      </div>
+
+      <div class="weather-buttons">
+        <button class="weather-btn" onclick="changeWeather('rain')">🌧️ 雨天</button>
+        <button class="weather-btn" onclick="changeWeather('snow')">❄️ 下雪</button>
+        <button class="weather-btn" onclick="changeWeather('aurora')">🌌 極光</button>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="panel">
+        <div class="cat-zone">
+          <div class="cat" id="cat">
+            🐈
+            <div class="hover-tip">點一下看看貓咪想說什麼 🤔</div>
+          </div>
+
+          <div class="zoomies-banner" id="zoomiesBanner">
+            ⚡ 偵測到貓咪暴衝事件 ⚡ 
+          </div>
+
+          <div class="dialogue" id="dialogue"></div>
+        </div>
+
+        <div class="stats">
+          <div>
+            飢餓值
+            <div class="bar"><div class="bar-fill" id="hungerBar"></div></div>
+          </div>
+
+          <div>
+            精力
+            <div class="bar"><div class="bar-fill" id="energyBar"></div></div>
+          </div>
+
+          <div>
+            信任值
+            <div class="bar"><div class="bar-fill" id="trustBar"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h2>行為紀錄</h2>
+          <div class="thought-box" id="thoughtBox"></div>
+        </div>
+
+        <div class="panel" style="margin-top:24px;">
+          <h2>互動面板</h2>
+
+          <div class="actions">
+            <button class="action-btn" onclick="feedCat()">🍖<br>餵食</button>
+            <button class="action-btn" onclick="petCat()">🤲<br>摸摸</button>
+            <button class="action-btn" onclick="laserPointer()">🔴<br>雷射筆</button>
+            <button class="action-btn" onclick="sleepCat()">💤<br>睡覺</button>
+            <button class="action-btn" onclick="annoyCat()">😾<br>惹怒貓咪</button>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:24px;">
+          <h2>心理分析</h2>
+
+          <div class="psychology">
+            <div>目前依附狀態：<span id="moodText"></span></div>
+            <div>互動時被咬的機率：<span id="biteChance"></span></div>
+            <div>生物學結論：<span id="biologyConclusion"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const thoughts = [
+      '貓咪盯著牆壁看了十四秒。可能看見宇宙真理了。',
+      '小小肉球，大型心理戰。',
+      '貓咪把杯子推下桌，只是想確認重力還在。',
+      '你的寵物短暫獲得了自我意識，然後後悔了。',
+      '房間某處傳來神秘咀嚼聲。',
+      '貓咪假裝不在乎你。這是謊言。',
+      '橘貓神經元短暫啟動了 0.3 秒。',
+      '一道深沉喵聲劃過夜晚，像詛咒小提琴。'
+    ];
+
+    const catReactions = [
+      'purr.exe 已啟動。',
+      '貓咪用頭撞你的手，像一台迷你情感坦克。',
+      '你暫時被批准加入貓咪殖民地。',
+      '貓咪閉眼了 1.7 秒。信任值上升。'
+    ];
+
+    const trustLossReactions = [
+      '貓咪緩慢地轉過身，只留下冷酷背影。',
+      '你剛剛似乎做了某件會被記仇十年的事。',
+      '貓咪開始懷疑你是不是獸醫派來的。',
+      '空氣裡瀰漫著「你今晚別想摸我」的氣氛。',
+      '貓咪發出極其短促但充滿譴責意味的：喵。'
+    ];
+
+    let hunger = 62;
+    let energy = 74;
+    let trust = 48;
+    let weather = 'rain';
+    let zoomiesTimeout = null;
+
+    const weatherLayer = document.getElementById('weatherLayer');
+    const thoughtBox = document.getElementById('thoughtBox');
+    const cat = document.getElementById('cat');
+    const dialogue = document.getElementById('dialogue');
+    const alertBox = document.getElementById('alertBox');
+    const zoomiesBanner = document.getElementById('zoomiesBanner');
+
+    function clamp(value, min = 0, max = 100) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function randomThought() {
+      return thoughts[Math.floor(Math.random() * thoughts.length)];
+    }
+
+    function updateBars() {
+      document.getElementById('hungerBar').style.width = hunger + '%';
+      document.getElementById('energyBar').style.width = energy + '%';
+      document.getElementById('trustBar').style.width = trust + '%';
+
+      updatePsychology();
+    }
+
+    function updatePsychology() {
+      let mood = '毛茸茸房東';
+      let biology = '這隻貓依然把你視為大型不可預測生物。';
+
+      if (trust > 80) {
+        mood = '極度依戀';
+        biology = '這隻貓在世界末日時大概會願意坐你旁邊。';
+      } else if (trust > 55) {
+        mood = '小心翼翼地親近';
+        biology = '已建立低風險共存關係。你暫時被視為可接受大型哺乳類。';
+      } else if (trust > 30) {
+        mood = '情感迴避貓咪';
+        biology = '這隻貓仍處於觀察期，並保留隨時逃跑權利。';
+      }
+
+      document.getElementById('moodText').textContent = mood;
+      document.getElementById('biteChance').textContent = Math.round(100 - trust) + '%';
+      document.getElementById('biologyConclusion').textContent = biology;
+    }
+
+    function updateAlert() {
+      let text = '';
+
+      if (hunger < 25) {
+        text = '🍖 貓咪飢餓值過低，建議立即投餵罐罐。';
+      } else if (energy < 20) {
+        text = '💤 貓咪精力即將耗盡，牠快變成液體了。';
+      } else if (trust < 20) {
+        text = '⚠️ 信任值偏低。貓咪正在重新評估你是否值得信任。';
+      }
+
+      alertBox.innerHTML = text ? `<div class="alert">${text}</div>` : '';
+    }
+
+    function setThought(text) {
+      thoughtBox.classList.add('thought-hidden');
+
+      setTimeout(() => {
+        thoughtBox.innerHTML = `${text}<div class="scan-line"></div>`;
+        thoughtBox.classList.remove('thought-hidden');
+      }, 180);
+    }
+
+    function generateDialogue() {
+      const pool = [];
+
+      if (hunger < 30) {
+        pool.push('你是不是忘記罐罐的存在了。');
+        pool.push('本貓正在進入低血糖暴怒模式。');
+      }
+
+      if (energy < 30) {
+        pool.push('今天不想跑酷了... 💤');
+        pool.push('本貓目前 CPU 使用率過高。');
+      }
+
+      if (trust > 75) {
+        pool.push('你坐下，我就過去陪你。');
+        pool.push('今天可以給你摸五分鐘。');
+      }
+
+      if (trust < 35) {
+        pool.push('我們之間目前只有租賃關係。');
+        pool.push('請停止試圖觸碰本貓高貴靈魂。');
+      }
+
+      pool.push('......喵。');
+      pool.push('你半夜不睡覺是不是又在想人生。');
+      pool.push('窗外那片雨聲不錯。');
+
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function triggerZoomies() {
+      clearTimeout(zoomiesTimeout);
+
+      cat.classList.add('zoomies');
+      zoomiesBanner.style.display = 'block';
+
+      zoomiesTimeout = setTimeout(() => {
+        cat.classList.remove('zoomies');
+        zoomiesBanner.style.display = 'none';
+      }, 2500);
+    }
+
+    function feedCat() {
+      hunger = clamp(hunger + 18);
+      trust = clamp(trust + 5);
+      updateBars();
+      updateAlert();
+      setThought('貓咪用驚人的效率吃掉了點心。🍖');
+    }
+
+    function petCat() {
+      trust = clamp(trust + 10);
+      energy = clamp(energy - 3);
+      updateBars();
+      updateAlert();
+      setThought(catReactions[Math.floor(Math.random() * catReactions.length)]);
+    }
+
+    function laserPointer() {
+      energy = clamp(energy - 12);
+      trust = clamp(trust + 3);
+      triggerZoomies();
+      updateBars();
+      updateAlert();
+      setThought('速度已取代理性思考。🔴');
+    }
+
+    function sleepCat() {
+      energy = clamp(energy + 25);
+      updateBars();
+      updateAlert();
+      setThought('這生物縮成了一團蝦子形狀的奇點。💤');
+    }
+
+    function annoyCat() {
+      trust = clamp(trust - 18);
+      energy = clamp(energy + 4);
+
+      if (Math.random() < 0.4) {
+        triggerZoomies();
+      }
+
+      updateBars();
+      updateAlert();
+      setThought(trustLossReactions[Math.floor(Math.random() * trustLossReactions.length)]);
+    }
+
+    function changeWeather(next) {
+      if (next === weather) return;
+
+      weatherLayer.classList.add('weather-transition');
+
+      setTimeout(() => {
+        weather = next;
+        createParticles(weather);
+
+        setTimeout(() => {
+          weatherLayer.classList.remove('weather-transition');
+        }, 120);
+      }, 380);
+    }
+
+    function createParticles(type) {
+      weatherLayer.innerHTML = '';
+
+      if (type === 'rain') {
+        weatherLayer.innerHTML += '<div class="rain-bg"></div>';
+      }
+
+      if (type === 'snow') {
+        weatherLayer.innerHTML += '<div class="snow-bg"></div>';
+      }
+
+      if (type === 'aurora') {
+        weatherLayer.innerHTML += '<div class="aurora-bg"></div>';
+        weatherLayer.innerHTML += '<div class="aurora-wave"></div>';
+      }
+
+      for (let i = 0; i < 80; i++) {
+        const particle = document.createElement('div');
+
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+
+        if (type === 'rain') {
+          particle.style.width = '1px';
+          particle.style.height = (8 + Math.random() * 22) + 'px';
+          particle.style.background = 'rgba(103,232,249,.7)';
+          particle.style.animation = 'rainFall .8s linear infinite';
+        }
+
+        if (type === 'snow') {
+          const size = 3 + Math.random() * 5;
+          particle.style.width = size + 'px';
+          particle.style.height = size + 'px';
+          particle.style.borderRadius = '999px';
+          particle.style.background = 'rgba(255,255,255,.8)';
+          particle.style.animation = 'snowFall 6s linear infinite';
+        }
+
+        particle.style.animationDelay = Math.random() * 4 + 's';
+        weatherLayer.appendChild(particle);
+      }
+    }
+
+    cat.addEventListener('click', () => {
+      if (dialogue.style.display === 'block') {
+        dialogue.style.display = 'none';
+        return;
+      }
+
+      dialogue.innerHTML = `<small>🐾 貓咪正在低聲喵喵</small>${generateDialogue()}`;
+      dialogue.style.display = 'block';
+    });
+
+    setInterval(() => {
+      hunger = clamp(hunger - 1);
+      energy = clamp(energy - .5);
+
+      updateBars();
+      updateAlert();
+
+      if (Math.random() < .08) {
+        setThought(randomThought());
+      }
+
+      if (Math.random() < .05) {
+        triggerZoomies();
+      }
+    }, 2200);
+
+    updateBars();
+    updateAlert();
+    createParticles(weather);
+    setThought('貓咪正在默默評估你的演化適應度。');
+  </script>
+</body>
+</html>
