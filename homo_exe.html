@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOMO.EXE 🐱</title>
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAMAEBAAAAEAIABoBAAANgAAACAgAAABACAAKBEAAJ4EAAAwMAAAAQAgAGgmAADGFQAAKAAAABAAAAAgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPCsWiLurFXS8rNZFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID//wKE2f2T5a9i0O2rVIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID/gAJtxLyUhNf/OtObdH/urFXEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9ojyBVsXiTVLB3OlB+81OZdKfA15hG3QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMZZHWwW2Qzal0qX1xkNS8yHNvh8Z5X+nNZpFry2aSZ8tkj0D/VaoDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzmKTGsxlkZLMZpPPzWaT4MtojOvKaoTyy2WSwLFzpfDLZpLyzGaT1MxmkiMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADcnkpu3J1Kvk6D9Wkzq/9qksHqMbaGsejLZZLKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7qxVadadcO9uWOtob8TEJ4PZ/6CsgLwizGaT/s9nkSUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOysUkTurFXwaq9wMFSxdqBbpNsObljqnMNjlPLIYo5GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMmTMF7axV2cCtXuafr3ggM63/m0597zGrT3Xjqk50S/+AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOuoUSbvrFXN7KxX/uOsX/DurFXf6aVX/e6rVfzuq1X9761V6O6sVaLtp08dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO2qVSrxrFZK66pVTsBpcP7OiGtYYKzWucarel7esm3R7atV1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL+AgATMZpP+glvWtlCC9TOB2P9Vhdj9ffKuVyYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy2WS7bZiqFtUsXhVbcW9fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMtmkae6co7OVrF2fQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADPaI8gzGaS1c1jlSQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACAAAABAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADyrlcm76xVyu+sVYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO2tV2TurFX/7qxV/++uVFIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA5v8Kh9j4vdi1d/zurFX/7qxV1f8AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgOb/CoTZ/7yD2f/J17d6R+6sVf/urFX/66pVMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHS5uQuD2P+9g9n/yYDf/xAAAAAA761V3+6sVf/tq1R0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABNs4AKVbJ3vW7GwMqAz/8QAAAAAHBV6jDOl3ru7qxV/++sVKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATbOAClWyd71VsnbJUK9wEAAAAABtWOoxblnp7MKOh+7rqVP/6KdRugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzWOVJMtlkV1YsXi9VbJ2yVCvcBAAAAAAMaj/L1J/9OxtW+uKwok7m8OIO//DiDu+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLZZHPzGaS/694jPqtd4w+AAAAADGo/y8zq//rM6z/hwAAAADDhzqiw4g7/8OHO7cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxmkozMZpL/zGaS/8xmk/7MZpLXonmv7ZZ+uezLZpKUzGaRm8pufeHJb3r/ymuE8MtlktTMZpLazWaT1stmksXMZZKfzWWSYNhiiQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAcxlkWjMZpLrzGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS7c1mkmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxmgArLZ5JUzWaRjstmkrLNZpPBzGaSw8tmkrzJb3ryyHJy/8pvecrMZZKDymWSfpd/uMmRgbz7y2aTzcxmkv3MZpL/zGaS/8xlkYsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMmMPtrLjkD/zZFAfwAAAAA0qP9YM6z/9jGr/1gAAAAAyGeYKr57pu3MZpL/zGaS/8tkklQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7qxU4O6sVf/sq1R6bFrqVU6F9vc0qf9ZAAAAAICA/wKE2v+ZhdT64stolNLMZpL/zGWT1v8AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADurFXc7qxV/8COi8VuWer2blnqVgAAAACAgP8ChNr/mYPZ/+KD2/8jzGaSS8xmkv/MZpL/zmeSLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO2sVcrurFX/uYmR+25Z6lYAAAAAAICAAm3HwJqD2f/ig9v/IwAAAACAW9scymaV/cxmkv/NZpJnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7qxUpu6sVf/sqlfHAAAAAACAgAJVsnaZVbF24m3FxSMAAAAAaF3oFm5Y6tO8ZKH/zGaS/81mkoUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADurFVp7qxV/+6sVfziqFcjVLF2mlWxduJQr3UjAAAAAFGA8xZuWOrTbVnqtMJhkMrEYIv/w1+IlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPKuURPurFXy7qxV/8+tXOlZsXXiUK91IwAAAAAxqv8VM6z/0lKA9LVtSdsHqk51xKpOdP+rTnWXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO2rVHTurFX/7qxV/+qsVs3srFJEUq3rGTOs/9Izq/+0JLb/BwAAAACrT3TMqk50/6pOdJOqqlUD/8xmBf+AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAe6sVZburFX/7qxV/+6sVf/mrF38y6x0/+isW8XvrFW77axVxOSfWfbmoVj/7KhW+u+sVfnurFX87qxV+e6sVefvrVW97qtUevWtUhkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO6rVFvurFTd7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV9u2rVHMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+AgALxrVc47axVb++sVI7vrFWc7axVnOyqVZbPgWT9yXpl/9eLYKDuq1RbzqxyaXysvPWmq5bD7atVru2rVffurFX/7qxV/+2sVX4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv2CACLRVfP61Vn7/t1d+VUeO8RIzrP/NMqz/uzmq/wkAAAAAqMjFT9K3gf/urFX/7qxV1wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADRXYsLzGaS/8xmkv+6YqJgblnqzE6E9bs5qv8JAAAAAILc/zOD2P/uiNf1he+rVGHtqlU5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALZtkgfMZpL9zGaS/49ey/JuWeq6cVXjCQAAAACA2P80g9j/7oPa/4IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxlku/MZpL/pWC3wHFV4wkAAAAAU7F2NG3Gv+6D2P+CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzGWSx8xmkv/MZ5KkAAAAAFW0eDNVsnfuVLJ4ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLZpGEzGaS/8xmkvJ1nIBIVbJ37lSyeIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9ojyDMZpL5zGaS/6l8iv9YsXmDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM1mk3/MZpL/zGaS/8xmk1oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAAsxlkYbMZpLQzGaQNwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAADAAAABgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA661SGe6sVZnurFSj9LBVLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7axUmu6sVf/urFX/7qtV0vGxVSQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA761Xm+6sVf/urFX/7qxV/+2rVa7/mWYFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wGA2f8ojtXuz9uzcf7urFX/7qxV/+6tVevwrFZEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDZ/yiD2f+9g9n/+KvHvqTvrVXo7qxV/++sVfzurFSI1KpVBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAidv/HIPa/86D2f/4g9j/d8LCnhXvrlaj7qxV/+6sVf/urFS/86pVFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wGA0vkog9n/z4Ta//aE2/+FjuP/CQAAAADurFNr7qxV+O6sVf/uq1Xq8axTJQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFOzgChtyMG9gtj6+ITZ/4WA3/8QAAAAAAAA/wHRm3VZ6qpZ8u6sVf/urFX97KtUQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUrZ2HFWzds9XtH74bsbCeY7j/wkAAAAAAAAAAG5V7h6Ma8bF4aNk/e6sVf/urFX/7qxTawAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wFTs3MoVLF2z1Wyd/ZUsHeFVapxCQAAAAAAAP8Ba1LmH25Y68p/Y9f536Fn/e2rVP/sq1T/7KlSiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFOzcyhVsne9VbJ2+FSwd4VQr3AQAAAAAAAA/wFQgPQwa1vqxm5Z6vaAZM+g0pVP6NaXRv/UlkX/0pVEkwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANNkmxfMZpKRy2eRjVyuec9Vsnb4VrJ2d1WqcQkAAAAAAAAAADWn/x02qP/CU37z/Wxc7JCofHYpwog73sOIO//DiDv/wog7kgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM1mk57MZpL/zGaS/7F2jP16moChjo6AEgAAAAAAAP8BNaf/HTOs/8gzrP/2Mqv/iwAA/wHBizYhxIg738OIO//DiDv/xIk7igAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxmkK/MZpL/zGaS/81mk/7MZpPizGeSms5lkmKjeKxTUp3nw0Sk8/lHovCajoC0IsxmjxnHdGVExIFL5sWATv/Ff1H/x3hhqMtlk1POZZRYzWWSW85nklnMZpNQzGaRQctikCfMZpkKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMtokjbMZpLczGaS/8xmkv/MZpL/zGaS/8xmkvXJaZXvu26d/bhvn/3EaZfnzGaT28xmkd3MZpDlymmK/Mtpiv/LaYv/zGiP9sxmkvDLZpLyzGaS88xmkvLMZpLvzGaS6sxmkuHMZpLNy2aSis9nkSUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHLY442zGWSxMxmkvTMZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkvXMZZGLzGaQHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1WOOEstkkGPMZpKqzGaS4Mxmkf3MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/MZpL/zGaS/8xmk/7MZpL7zGaS+sxmkv3MZpL/zGaS/8xmkv/MZpL/zGaS/8xmkv/NZpL9y2aSxtBmlUEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8A/wHbbZIOyWSTIcplkTrKZpFmy2aShc1nkZXNZpKdzGaSm8xlk5LJbX6wx3dl+MZ6Xv/GfFj/yXNzbcpllTXOZ5IvyGSQLnOPz3ZbmuL5cJDT9MZpmJzMZpLezGaS/sxmkv/MZpL/zGaS/81mktrPaJM7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDijxZxYo88saKPf/Giz38xYpAMAAAAAAzmf8FMqr/SDOs//IzrP/mNKn/SgAAAADGcY4JyWaRZMZxm/DLZ5P/zGaS/8xmkv/LZpK3zmGSFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfnktf359L9OCgTf/hoU354qJLLICA/wROgvNYNqj/5zSr/ugxq/9YM5n/BQAAAACAgP8Cgdf/TZDE6+S5g639zGaT/sxmkv/MZpL5zWSTYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvrVVg7axU9e6sVf/urFX37axTK2xa6UdrXuvlTYf29DWp/00zmf8FAAAAAAD//wGB1/9Ng9n/4oPZ/u+iqNCHzWeS5sxmkv/MZpL/zGaS2KpVVQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsq1Re7atV9O6sVf/vrFX5oHqucW5a6vJuWenmblnqSAAAAAAAAAAAAP//AYLZ/z2D2f/eg9n/74La/2AAAAABzGeQmsxmkv/MZpL/zGaS/8xmlTwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADtrFNW7qxV8e6sVf/urFX+i2vJ+G5Z6eZuWepWgID/BAAAAACA//8CgNj8ToPZ/96D2f/ihNv/WwAAAAAAAAAAzWSRM8xmkv7MZpL/zGaS/8xlkoMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwrlVF761V6+6sVf/urFX/m3e0829a7UeAgP8EAAAAAAD/AAFWs3dNb8jC4oPZ/++E2/9bgP//BAAAAAAAAAAAdlrnQcVlmf3MZpL/zGaS/81mkrcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADurFMu7axV5O6sVf/urFX/5addlAAAAAAAAAAAAP8AAVS0dT1VsnfeVbJ2723Gw2IAAAAAAAAAAFVVqgNsWehCbVjq5bRjqP/MZpL/zGaS/81mktGqVYAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADuqlUP7axU1O6sVf/urFX/7axV1/+qVQYAgIACU7N3TVWyd95VsXbiVLF2WwAAAAAAAAAAAAAAAGxZ6EJuWOrTblnr77Rjp9rMZpL/zGaS/8xmktnbbZIOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAB7q1WmO6sVf/urFX/7qxV/e2tVVRWs3dNVbJ24lWydu9UsXZbQL+ABAAAAAAAAAAAUnv3Pm5Y6+RuWevvblrrWMBfjJ7AXoj/vlyG/7xag9y8WXoXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8KxTNO6sVfjurFX/7qxV/9+sWOprsXLiVbJ271WvdWAAAAAAAAAAAAD//wI0q/9AM6v/5FN+8+9sWelqgED/BKtOdZ2qTnT/qk50/6pOdNyqSnUYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAe+tVJvurFX/7qxV/+ysVf/Brl/8j69qgAAAAAAAAAAAAAAAADSr/0AzrP/SM6v/8DWo/2pJkv8HAAAAAKtPdaGqTnT/qk50/6pOdNymTm8XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPGxVSTurFXR7qxV/+6sVf/trFX+7atU5O+tVozzqlUqOq37PjOs/+QzrP/vNK7/WEC//wQAAAAAAAAAAKxPdq+qTnT/qk50/6tOdNqzWXMU1KpVBv+/YAjfn0AI/4AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAHurVVL7qxV4O6sVf/urFX/7qxV/+6sVf/urFX81qxr+7mshP+9rYLW6atZle2rVI7urFWT7qtWod+WXefdllz/4pxa/+ijWPzurFTy7qxV9++tVfnuq1X67axV8+6sVODtq1W67qxThO+tUkHrrVIZv4BABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAB8KpVRe6rVL/vrFX77qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVfrtrFXK7qxVe+aqVR4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPSqVRjurFNs7qxV4u6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV/+6sVf/urFX/7qxV+u2sVcztqlU5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/6pVBu6tVUvtrFWQ7qxVwu2rVdjurFXc7qxV3u6sVd7urFTd7qxV3OSeWf7hmlr/3ZVc/9+ZXOHuq1ah7q1WleytV5LDq3zCrayP+8Wse/XprFnc76tV6O+sVfrurFX/7qxV/+6sVf/urFXV87BVKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAuqqVQz0plkX7qpVHu2nTx3rrVIZ25JkHK5Sc/urT3P/qk50/6tNc5sAAAAAAAAAADGq/zkzrP/NMqz/8zOs/XKjrY8Z7q1SO+2sVX7rrVrb7axW/+6sVf/urFX/76xVnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqlV3D7lZgv+8WoT/vlyF/8Bch4oAAAAAS4fwMzKr/+AyrP/zMq7/YTPM/wUAAAAAAAAAAIrW8SWZ0NvX17V4/+6sVf/urFX/7axVuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyV6UE8xmkv/MZpL/zGaS/8tmlIVtW+g4blnp302G9fEzqv9yM8z/BQAAAAAA//8Bg+D/IYTa/8+D2P/1kNXriu+rVI/vrVWu8KxTNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz3CfEMxmkv/MZpL/zGaS/7NjqbVuWerMb1rq8mxa63FNgOYKAAAAAAD//wGA2P80g9n/yIPY//WD2v+Ci9H/CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxnGqCctmkvvMZpL/zGaS/6ZgtvluWuryblvsX2Zm/wUAAAAAAAAAAIPY/yGD2f/Ig9n//YLa/4OAv/8MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wD/AcxmkuzMZpL/zGaS/7FiqvRuWupvZmbMBQAAAAAA/wABVbJ0IW3HwNGB1/r1gtj/gwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxmkcjMZpL/zGaS/8hlldmhXrwTAAAAAAD/AAFVtHgzVbJ3yFe0fvVtxb+Di9H/CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM1lkpPMZpL/zGaS/8xlkuXLaJIxAAAAAFWyfCFVsnfIVbJ3/Vazd4NduXQLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMpnkk3MZpL8zGaS/8xmkvjKZpJzXKp4JFWzd89Vsnf1VbJ2hAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMpqlR3LZpLUzGaS/8xmkv/HaZDWaaR71VWyd/VUsniCVapqDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxmmQXNZpKFy2aS/Mxmkv/LZ5L/rXmL/12seYdduXQLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLYpAnzGaS1Mxmkv/MZpL/zGaS/8tmk4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy2eURc1mkt/MZpL/zGaS/8tmkawAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wD/ActjkjHMZpKby2WSq81kkC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==">
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<style>html,body,#root{margin:0;padding:0;width:100%;min-height:100%;background:black}body{overflow-x:hidden;font-family:Inter,system-ui,sans-serif}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>const { useEffect, useState } = React;
+function HomoExeUI() {
+    const [mode, setMode] = useState('default');
+    const [selectedTopic, setSelectedTopic] = useState(null);
+    const [isOpeningTopic, setIsOpeningTopic] = useState(false);
+    const [isClosingTopic, setIsClosingTopic] = useState(false);
+    const [mirrorAnalysis, setMirrorAnalysis] = useState('尚未進行人格掃描 No psychological scan detected.');
+    const [currentMirrorQuestion, setCurrentMirrorQuestion] = useState(0);
+    const [hasAnsweredMirrorQuestion, setHasAnsweredMirrorQuestion] = useState(false);
+    const [isMirrorTransitioning, setIsMirrorTransitioning] = useState(false);
+    const mirrorQuestions = [
+        {
+            question: '如果世界上沒有人能看見你，你還會想成功嗎？',
+            yes: '受試者對外部認可存在高度依附。 Subject exhibits external validation dependency.',
+            no: '受試者傾向內部動機驅動。 Subject leans toward intrinsic motivation.',
+        },
+        {
+            question: '如果沒有社群媒體，你還會記錄自己的人生嗎？',
+            yes: '受試者仍保有內部敘事需求。 Internal memory preservation detected.',
+            no: '外部觀察者對自我存在感影響顯著。 External audience dependency detected.',
+        },
+        {
+            question: '如果所有人突然忘記你，你覺得自己還存在嗎？',
+            yes: '主體存在感較不依賴社會記憶。 Identity stability remains resilient.',
+            no: '身份認同高度建立於群體回饋。 Social reflection anchors identity.',
+        },
+        {
+            question: '你願意用一半壽命交換永遠不再孤獨嗎？',
+            yes: '依附需求高於生存延續。 Attachment priority elevated.',
+            no: '受試者傾向保留自主存在。 Self-preservation priority detected.',
+        },
+        {
+            question: '如果演算法比你更了解你自己，那「你」還剩下什麼？',
+            yes: '主體對自我邊界產生動搖。 Identity boundary destabilization detected.',
+            no: '受試者仍保有主觀意識核心。 Core self-perception remains active.',
+        },
+    ];
+    const [collectedArtifacts, setCollectedArtifacts] = useState([]);
+    const [latestArtifact, setLatestArtifact] = useState('No anomaly collected.');
+    const [floatingArtifacts, setFloatingArtifacts] = useState([]);
+    const [collectingArtifact, setCollectingArtifact] = useState(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [pendingMode, setPendingMode] = useState(null);
+    const [blackoutPhase, setBlackoutPhase] = useState('idle');
+    const archiveTopics = [
+        {
+            title: '愛情 Love',
+            desc: '愛情可能是一種演化出來的神經依附系統。',
+            color: 'from-pink-500/20 to-rose-400/10',
+            stats: 'Oxytocin / Attachment / Pair Bonding',
+            content: '激情像多巴胺風暴，而依附更像長期神經鎖鏈。愛情可能既浪漫，又是一套避免人類在育幼期間逃跑的演化策略。',
+            quote: 'Love may be the most beautiful survival strategy ever evolved.',
+        },
+        {
+            title: '宗教 Religion',
+            desc: '共享神話讓陌生人得以合作。',
+            color: 'from-amber-500/20 to-yellow-400/10',
+            stats: 'Myth / Ritual / Coordination',
+            content: '文明某種程度上建立於共同幻覺。共享信仰與儀式，讓數百萬陌生人能朝同一方向行動。',
+            quote: 'A shared fiction can organize an empire.',
+        },
+        {
+            title: '資本主義 Capitalism',
+            desc: '現代世界的慾望引擎。',
+            color: 'from-emerald-500/20 to-cyan-400/10',
+            stats: 'Growth / Debt / Consumption',
+            content: '現代經濟透過信用、廣告與未來承諾，構成了一套讓人類永遠感覺還不夠的心理循環。',
+            quote: 'The economy grows by manufacturing dissatisfaction.',
+        },
+        {
+            title: 'Social Media Systems',
+            desc: '注意力已成為資源。',
+            color: 'from-sky-500/20 to-indigo-400/10',
+            stats: 'Attention / Dopamine / Algorithms',
+            content: '社群媒體更像注意力採礦場。演算法透過刺激情緒與焦慮，延長人類停留時間。',
+            quote: 'If a platform is free, your nervous system is probably the product.',
+        },
+        {
+            title: 'AI Consciousness',
+            desc: '如果 AI 能模擬情緒，人類還剩下什麼？',
+            color: 'from-red-500/20 to-fuchsia-400/10',
+            stats: 'Simulation / Identity / Consciousness',
+            content: '如果 AI 能理解情緒、建立人格與創作藝術，人類將不得不重新定義意識本身。',
+            quote: 'When machines imitate humanity perfectly, humanity loses monopoly over meaning.',
+        },
+    ];
+    const artifactPool = [
+        { emoji: '🧠', label: '敘事認知形成' },
+        { emoji: '👁️', label: '監控資本主義之眼' },
+        { emoji: '🧬', label: '基因種性片段' },
+        { emoji: '💊', label: '多巴胺風暴' },
+        { emoji: '📡', label: '回音室效應餘波' },
+    ];
+    const timeline = [
+        {
+            title: 'Hunter Gatherers',
+            message: '偵測到小型部落結構。神話形成機率偏低。',
+            accent: 'from-orange-400/20 to-amber-300/10',
+        },
+        {
+            title: 'Agricultural Revolution',
+            message: '資源剩餘出現。階級文明正在形成。',
+            accent: 'from-yellow-400/20 to-lime-300/10',
+        },
+        {
+            title: 'Religious Empires',
+            message: '共享神話同步率上升。大型宗教帝國正在穩定化。',
+            accent: 'from-red-500/20 to-amber-400/10',
+        },
+        {
+            title: 'Industrial Capitalism',
+            message: '消費循環正在加速。資本系統開始吞噬社會。',
+            accent: 'from-cyan-400/20 to-slate-400/10',
+        },
+        {
+            title: 'Algorithmic Society',
+            message: '行為預測系統已開始影響人類群體流動。',
+            accent: 'from-indigo-500/20 to-cyan-400/10',
+        },
+        {
+            title: 'AI Symbiosis',
+            message: '觀察者與系統的邊界開始不穩定。',
+            accent: 'from-fuchsia-500/20 to-cyan-400/10',
+        },
+    ];
+    const [activeTimeline, setActiveTimeline] = useState(0);
+    const [timelineTransition, setTimelineTransition] = useState(false);
+    const [activeWorldMode, setActiveWorldMode] = useState(null);
+    const [worldLayerTransition, setWorldLayerTransition] = useState(false);
+    useEffect(() => {
+        if (mode !== 'default')
+            return;
+        const randomized = artifactPool.map((artifact, index) => (Object.assign(Object.assign({}, artifact), { x: `${10 + Math.random() * 75}%`, y: `${10 + Math.random() * 70}%`, delay: `${index * 0.7}s` })));
+        setFloatingArtifacts(randomized);
+    }, [mode]);
+    const switchMode = (nextMode) => {
+        if (isTransitioning || nextMode === mode)
+            return;
+        setPendingMode(nextMode);
+        setIsTransitioning(true);
+        setBlackoutPhase('entering');
+    };
+    const handleBlackoutTransitionEnd = () => {
+        if (blackoutPhase === 'entering' && pendingMode) {
+            setMode(pendingMode);
+            setPendingMode(null);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setBlackoutPhase('exiting');
+                });
+            });
+            return;
+        }
+        if (blackoutPhase === 'exiting') {
+            setBlackoutPhase('idle');
+            setIsTransitioning(false);
+        }
+    };
+    const openTopic = (topic) => {
+        setSelectedTopic(topic);
+        setIsOpeningTopic(true);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                setIsOpeningTopic(false);
+            });
+        });
+    };
+    const closeTopic = () => {
+        setIsClosingTopic(true);
+        setTimeout(() => {
+            setSelectedTopic(null);
+            setIsClosingTopic(false);
+        }, 420);
+    };
+    const nextMirrorQuestion = () => {
+        setIsMirrorTransitioning(true);
+        setTimeout(() => {
+            setCurrentMirrorQuestion((prev) => prev === mirrorQuestions.length - 1 ? 0 : prev + 1);
+            setMirrorAnalysis('等待下一次人格掃描 Awaiting next psychological response.');
+            setHasAnsweredMirrorQuestion(false);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setIsMirrorTransitioning(false);
+                });
+            });
+        }, 420);
+    };
+    const collectArtifact = (artifact) => {
+        if (collectedArtifacts.includes(artifact.label))
+            return;
+        setCollectingArtifact(artifact.label);
+        setTimeout(() => {
+            setCollectedArtifacts((prev) => [...prev, artifact.label]);
+            setLatestArtifact(`${artifact.emoji} archived: ${artifact.label}`);
+            setTimeout(() => {
+                setCollectingArtifact(null);
+            }, 180);
+        }, 420);
+    };
+    const activateTimeline = (index) => {
+        setTimelineTransition(true);
+        setTimeout(() => {
+            setActiveTimeline(index);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setTimelineTransition(false);
+                });
+            });
+        }, 420);
+    };
+    return (React.createElement("div", { className: "relative min-h-screen overflow-hidden bg-black text-white" },
+        React.createElement("div", { onTransitionEnd: handleBlackoutTransitionEnd, className: `pointer-events-none fixed inset-0 z-[999] bg-black transition-opacity duration-500 ${blackoutPhase === 'entering' ? 'opacity-100' : 'opacity-0'}` }),
+        React.createElement("style", null, `
+        @keyframes floatArtifact {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-16px); }
+          100% { transform: translateY(0px); }
+        }
+
+        @keyframes artifactCollect {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+            filter: drop-shadow(0 0 0px rgba(34,211,238,0));
+          }
+
+          40% {
+            transform: scale(1.8);
+            opacity: 1;
+            filter: drop-shadow(0 0 24px rgba(34,211,238,1));
+          }
+
+          100% {
+            transform: scale(0);
+            opacity: 0;
+            filter: drop-shadow(0 0 60px rgba(34,211,238,1));
+          }
+        }
+
+        @keyframes artifactPulse {
+          0% { opacity: 0.7; }
+          50% { opacity: 1; }
+          100% { opacity: 0.7; }
+        }
+
+        @keyframes timelineWave {
+          0% {
+            opacity: 0;
+            transform: scaleY(0);
+          }
+
+          50% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes scanSweep {
+          0% {
+            transform: translateX(-120%);
+          }
+
+          100% {
+            transform: translateX(120%);
+          }
+        }
+
+        @keyframes civilizationBreath {
+          0% {
+            box-shadow: 0 0 0px rgba(34,211,238,0);
+          }
+
+          50% {
+            box-shadow:
+              0 0 32px rgba(34,211,238,0.22),
+              inset 0 0 24px rgba(255,255,255,0.04);
+          }
+
+          100% {
+            box-shadow: 0 0 0px rgba(34,211,238,0);
+          }
+        }
+
+        @keyframes nodePulse {
+          0% {
+            transform: scale(1);
+          }
+
+          50% {
+            transform: scale(1.35);
+          }
+
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes civilizationShift {
+          0% {
+            filter: brightness(1);
+          }
+
+          50% {
+            filter:
+              brightness(1.35)
+              saturate(1.4)
+              blur(2px);
+          }
+
+          100% {
+            filter: brightness(1);
+          }
+        }
+
+        @keyframes infectionFlicker {
+          0% {
+            opacity: 0.35;
+            filter: brightness(1);
+          }
+
+          50% {
+            opacity: 0.92;
+            filter:
+              brightness(1.8)
+              drop-shadow(0 0 24px rgba(255,0,80,1));
+          }
+
+          100% {
+            opacity: 0.35;
+            filter: brightness(1);
+          }
+        }
+
+        @keyframes infectionDrift {
+          0% {
+            transform: translateY(0px);
+          }
+
+          50% {
+            transform: translateY(-10px);
+          }
+
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        @keyframes collapsePulse {
+          0% {
+            opacity: 0.28;
+            filter: blur(0px);
+          }
+
+          50% {
+            opacity: 0.95;
+            filter:
+              blur(1px)
+              drop-shadow(0 0 18px rgba(255,255,255,0.9));
+          }
+
+          100% {
+            opacity: 0.28;
+            filter: blur(0px);
+          }
+        }
+      `),
+        React.createElement("div", { "data-world-mode": activeWorldMode || 'default', className: `fixed inset-0 overflow-hidden bg-black transition-all duration-1000 ${activeWorldMode === 'algorithmic'
+                ? 'tracking-[0.08em] brightness-125 saturate-150'
+                : ''} ${activeWorldMode === 'collapse'
+                ? 'contrast-50 saturate-0 blur-[2px] scale-[1.01]'
+                : ''}` },
+            React.createElement("img", { src: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=2070&auto=format&fit=crop", alt: "Default", className: `absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${mode === 'default'
+                    ? 'opacity-100 scale-100'
+                    : 'opacity-0 scale-110 blur-md'}` }),
+            React.createElement("img", { src: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2070&auto=format&fit=crop", alt: "Archive", className: `absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${mode === 'archive'
+                    ? 'opacity-100 scale-100'
+                    : 'opacity-0 scale-110 blur-md'}` }),
+            React.createElement("div", { className: `absolute inset-0 transition-all duration-1000 ${mode === 'mirror'
+                    ? 'bg-red-950 opacity-100'
+                    : 'bg-red-950 opacity-0'}` }),
+            React.createElement("div", { className: `absolute inset-0 transition-all duration-700 bg-gradient-to-br ${timeline[activeTimeline].accent} ${timelineTransition ? 'opacity-80 blur-xl scale-110' : 'opacity-40'}` }),
+            React.createElement("div", { className: "absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/80" }),
+            React.createElement("div", { className: `pointer-events-none absolute inset-0 z-[120] transition-all duration-700 ${worldLayerTransition
+                    ? 'opacity-0 scale-110 blur-xl'
+                    : 'opacity-100 scale-100 blur-0'}` },
+                activeWorldMode === 'algorithmic' && (React.createElement(React.Fragment, null,
+                    React.createElement("div", { className: "pointer-events-none absolute inset-0 overflow-hidden opacity-70 mix-blend-screen" },
+                        React.createElement("div", { className: "absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.14)_1px,transparent_1px)] bg-[size:100%_5px] animate-pulse" })),
+                    React.createElement("div", { className: "pointer-events-none absolute inset-0 overflow-hidden" },
+                        React.createElement("div", { className: "absolute left-[8%] top-[12%] rounded-full border border-cyan-300/40 bg-cyan-400/10 px-6 py-3 text-xs uppercase tracking-[0.35em] text-cyan-100 shadow-[0_0_40px_rgba(34,211,238,0.35)] backdrop-blur-md" }, "Behavioral Prediction Active"),
+                        React.createElement("div", { className: "absolute right-[10%] top-[28%] h-32 w-32 rounded-full border border-cyan-300/30 shadow-[0_0_60px_rgba(34,211,238,0.25)] animate-ping" }),
+                        React.createElement("div", { className: "absolute bottom-[14%] left-[12%] text-cyan-200/70 text-sm tracking-[0.4em] uppercase" }, "PATTERN DETECTED")))),
+                activeWorldMode === 'hallucination' && (React.createElement("div", { className: "pointer-events-none absolute inset-0 bg-yellow-300/20 mix-blend-screen backdrop-blur-[2px] transition-all duration-1000" })),
+                activeWorldMode === 'infection' && (React.createElement(React.Fragment, null,
+                    React.createElement("div", { className: "pointer-events-none absolute inset-0 bg-red-500/25 mix-blend-screen backdrop-blur-[1px]" }),
+                    React.createElement("div", { className: "pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,80,0.22),transparent_70%)]" }),
+                    React.createElement("div", { className: "pointer-events-none absolute inset-0 z-[140] text-center text-[8rem] font-black tracking-[0.22em] text-[#ff2b6e] mix-blend-screen", style: {
+                            animation: 'infectionFlicker 1.6s ease-in-out infinite, infectionDrift 6s ease-in-out infinite'
+                        } },
+                        React.createElement("div", { className: "absolute left-[8%] top-[10%] rotate-[-10deg] [text-shadow:0_0_24px_rgba(255,0,90,1),0_0_80px_rgba(255,0,90,0.9)]" }, "WORK HARDER"),
+                        React.createElement("div", { className: "absolute right-[5%] top-[36%] rotate-[7deg] [text-shadow:0_0_24px_rgba(255,0,90,1),0_0_80px_rgba(255,0,90,0.9)]" }, "BECOME MORE"),
+                        React.createElement("div", { className: "absolute bottom-[12%] left-[14%] rotate-[-3deg] [text-shadow:0_0_24px_rgba(255,0,90,1),0_0_80px_rgba(255,0,90,0.9)]" }, "REST IS FAILURE")))),
+                activeWorldMode === 'collapse' && (React.createElement("div", { className: "pointer-events-none absolute inset-0 flex items-center justify-center text-8xl font-black tracking-[0.12em] text-white/70 mix-blend-screen backdrop-blur-[2px] [text-shadow:0_0_18px_rgba(255,255,255,0.95),0_0_60px_rgba(255,255,255,0.45)]", style: { animation: 'collapsePulse 4s ease-in-out infinite' } }, "Who are you without labels?")))),
+        mode === 'default' && (React.createElement("div", { className: "pointer-events-none fixed inset-0 z-[60] overflow-hidden" }, floatingArtifacts.map((artifact) => {
+            const collected = collectedArtifacts.includes(artifact.label);
+            return (React.createElement("button", { key: artifact.label, onClick: () => collectArtifact(artifact), className: `absolute pointer-events-auto transition-all duration-500 hover:scale-[1.35] ${collected ? 'opacity-0 scale-50' : 'opacity-100'}`, style: {
+                    left: artifact.x,
+                    top: artifact.y,
+                    animation: collectingArtifact === artifact.label
+                        ? 'artifactCollect 0.5s ease forwards'
+                        : 'floatArtifact 7s ease-in-out infinite',
+                    animationDelay: collectingArtifact === artifact.label
+                        ? '0s'
+                        : artifact.delay,
+                } },
+                React.createElement("div", { className: `text-4xl transition-all duration-300 hover:scale-[1.25] hover:[filter:drop-shadow(0_0_12px_rgba(255,255,255,1))_drop-shadow(0_0_24px_rgba(34,211,238,1))_drop-shadow(0_0_48px_rgba(34,211,238,1))] ${collectingArtifact === artifact.label
+                        ? 'brightness-150'
+                        : 'animate-[artifactPulse_3s_ease-in-out_infinite]'}` }, artifact.emoji)));
+        }))),
+        selectedTopic && (React.createElement("div", { className: `fixed inset-0 z-[200] flex items-center justify-end bg-black/40 px-8 py-10 backdrop-blur-sm transition-all duration-500 ${isOpeningTopic || isClosingTopic
+                ? 'opacity-0'
+                : 'opacity-100'}`, onClick: closeTopic },
+            React.createElement("div", { onClick: (e) => e.stopPropagation(), className: `relative w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-950/90 shadow-2xl shadow-cyan-500/20 transition-all duration-500 ${isOpeningTopic || isClosingTopic
+                    ? 'translate-x-12 scale-[0.96] opacity-0'
+                    : 'translate-x-0 scale-100 opacity-100'}` },
+                React.createElement("div", { className: `absolute inset-0 bg-gradient-to-br ${selectedTopic.color} opacity-30` }),
+                React.createElement("div", { className: "relative z-10 p-8" },
+                    React.createElement("div", { className: "mb-8 flex items-start justify-between gap-4" },
+                        React.createElement("div", null,
+                            React.createElement("div", { className: "mb-2 text-[10px] uppercase tracking-[0.3em] text-cyan-300" }, "ARCHIVE ENTRY"),
+                            React.createElement("h2", { className: "text-3xl font-black md:text-5xl" }, selectedTopic.title)),
+                        React.createElement("button", { onClick: closeTopic, className: "rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-xs hover:bg-white/10" }, "CLOSE")),
+                    React.createElement("div", { className: "mb-5 rounded-[1.5rem] border border-white/10 bg-black/30 p-5" },
+                        React.createElement("div", { className: "mb-2 text-xs uppercase tracking-[0.2em] text-neutral-500" }, "\u7CFB\u7D71\u5206\u6790\u6642\u9593"),
+                        React.createElement("div", { className: "mb-3 text-sm text-cyan-100" }, selectedTopic.stats),
+                        React.createElement("p", { className: "leading-relaxed text-neutral-200" }, selectedTopic.content)),
+                    React.createElement("div", { className: "rounded-[1.5rem] border border-white/10 bg-black/40 p-5 italic text-neutral-300" }, selectedTopic.quote))))),
+        React.createElement("div", { className: "relative z-[50]" },
+            mode === 'default' && (React.createElement("div", { className: "min-h-screen px-6 py-20" },
+                React.createElement("div", { className: "mx-auto max-w-7xl" },
+                    React.createElement("div", { className: "grid min-h-[70vh] items-center gap-16 lg:grid-cols-2" },
+                        React.createElement("div", { className: "space-y-8" },
+                            React.createElement("div", { className: "inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-neutral-300 backdrop-blur-sm" }, "\u8A8D\u77E5\u6A21\u64EC\u4ECB\u9762 Cognitive Simulation Interface"),
+                            React.createElement("h1", { className: `text-5xl font-black leading-none transition-all duration-1000 md:text-7xl ${activeWorldMode === 'collapse'
+                                    ? 'opacity-40 blur-[3px] tracking-[0.2em]'
+                                    : activeWorldMode === 'algorithmic'
+                                        ? 'tracking-[0.08em]'
+                                        : ''}` }, "HOMO.EXE"),
+                            React.createElement("p", { className: "max-w-2xl text-lg leading-relaxed text-neutral-300" }, "\u63A2\u7D22\u5851\u9020\u4EBA\u985E\u6587\u660E\u7684\u7121\u5F62\u7CFB\u7D71"),
+                            React.createElement("div", { className: "flex flex-wrap gap-4" },
+                                React.createElement("button", { onClick: () => switchMode('archive'), className: "rounded-2xl bg-white px-6 py-3 font-semibold text-black hover:scale-105" },
+                                    "\u9032\u5165\u6A94\u6848\u5EAB",
+                                    React.createElement("br", null),
+                                    "enter archive"),
+                                React.createElement("button", { onClick: () => switchMode('mirror'), className: "rounded-2xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10" },
+                                    "\u93E1\u50CF\u6E2C\u8A66",
+                                    React.createElement("br", null),
+                                    "mirror test"))),
+                        React.createElement("div", { className: "relative flex h-[500px] items-center justify-center" },
+                            React.createElement("div", { className: "relative w-[340px] rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-md" },
+                                React.createElement("div", { className: "mb-6 flex items-center justify-between text-xs text-neutral-400" },
+                                    React.createElement("span", null, "SUBJECT #042"),
+                                    React.createElement("span", null, "\u89C0\u5BDF\u6A21\u5F0F")),
+                                React.createElement("div", { className: "space-y-4 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4 text-cyan-100" },
+                                    React.createElement("div", { className: "text-lg font-semibold" },
+                                        collectedArtifacts.length,
+                                        "/5 Collected"),
+                                    React.createElement("div", { className: "grid grid-cols-5 gap-2" }, artifactPool.map((artifact) => {
+                                        const collected = collectedArtifacts.includes(artifact.label);
+                                        return (React.createElement("div", { key: artifact.label, className: `flex h-12 items-center justify-center rounded-2xl border ${collected
+                                                ? 'border-cyan-300/50 bg-cyan-400/15'
+                                                : 'border-white/10 bg-black/20 opacity-40'}` },
+                                            React.createElement("span", { className: "text-2xl" }, artifact.emoji)));
+                                    })),
+                                    React.createElement("div", { className: "rounded-2xl border border-cyan-400/10 bg-black/30 p-3 text-sm text-cyan-100" }, latestArtifact))))),
+                    React.createElement("div", { className: "mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4" }, [
+                        {
+                            key: 'hallucination',
+                            title: 'Collective Hallucination',
+                            desc: '共同的信念建構現實世界',
+                        },
+                        {
+                            key: 'algorithmic',
+                            title: 'Algorithmic Humanity',
+                            desc: '行為漸漸向預測的系統轉變',
+                        },
+                        {
+                            key: 'infection',
+                            title: 'Narrative Infection',
+                            desc: '文明傳播的是敘述',
+                        },
+                        {
+                            key: 'collapse',
+                            title: 'Identity Collapse',
+                            desc: '敘事的標籤融於抽象之中',
+                        },
+                    ].map((card) => {
+                        const active = activeWorldMode === card.key;
+                        return (React.createElement("button", { key: card.key, onClick: () => {
+                                setWorldLayerTransition(true);
+                                setTimeout(() => {
+                                    setActiveWorldMode((prev) => prev === card.key
+                                        ? null
+                                        : card.key);
+                                    requestAnimationFrame(() => {
+                                        requestAnimationFrame(() => {
+                                            setWorldLayerTransition(false);
+                                        });
+                                    });
+                                }, 320);
+                            }, className: `group relative overflow-hidden rounded-[2rem] border p-6 text-left backdrop-blur-md transition-all duration-500 ${active
+                                ? 'border-cyan-300/60 bg-cyan-400/20 shadow-[0_0_64px_rgba(34,211,238,0.35)] scale-[1.03]'
+                                : 'border-white/10 bg-white/[0.03] hover:-translate-y-3 hover:scale-[1.02] hover:border-cyan-400/40 hover:bg-cyan-400/[0.08] hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]'} ${activeWorldMode === 'collapse'
+                                ? 'blur-[1px] opacity-70'
+                                : ''}` },
+                            React.createElement("div", { className: "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" },
+                                React.createElement("div", { className: "absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" })),
+                            React.createElement("div", { className: "relative z-10" },
+                                React.createElement("div", { className: "mb-3 flex items-center justify-between gap-4" },
+                                    React.createElement("div", { className: "text-lg font-semibold transition-all duration-300 group-hover:tracking-[0.08em]" }, card.title),
+                                    React.createElement("div", { className: `h-3 w-3 rounded-full transition-all duration-500 ${active
+                                            ? 'bg-cyan-300 scale-[1.6] shadow-[0_0_28px_rgba(34,211,238,1)]'
+                                            : 'bg-white/20'}` })),
+                                React.createElement("p", { className: "text-sm leading-relaxed text-neutral-400 transition-all duration-300 group-hover:text-neutral-200" }, card.desc),
+                                React.createElement("div", { className: `grid transition-all duration-500 ${active
+                                        ? 'mt-5 grid-rows-[1fr] opacity-100'
+                                        : 'grid-rows-[0fr] opacity-0'}` },
+                                    React.createElement("div", { className: "overflow-hidden" },
+                                        React.createElement("div", { className: "rounded-2xl border border-cyan-400/10 bg-black/30 p-4 text-sm text-cyan-100" }, "System contamination active. Reality layer modified."))))));
+                    })),
+                    React.createElement("div", { className: "mt-24 border-t border-white/10 pt-16" },
+                        React.createElement("div", { className: "relative space-y-10 border-l border-white/10 pl-8" },
+                            React.createElement("div", { className: "pointer-events-none absolute left-0 top-0 w-[2px] origin-top bg-cyan-300/70", style: {
+                                    height: '100%',
+                                    animation: timelineTransition
+                                        ? 'timelineWave 0.7s ease'
+                                        : undefined,
+                                } }),
+                            timeline.map((item, idx) => (React.createElement("button", { key: item.title, onClick: () => activateTimeline(idx), className: "group relative block w-full text-left" },
+                                React.createElement("div", { className: `absolute -left-[41px] top-5 h-4 w-4 rounded-full transition-all duration-500 ${activeTimeline === idx
+                                        ? 'scale-[1.6] bg-cyan-300 shadow-[0_0_24px_rgba(34,211,238,1)] animate-[nodePulse_2s_ease-in-out_infinite]'
+                                        : 'bg-cyan-300/60 group-hover:scale-[1.35]'}` }),
+                                React.createElement("div", { className: `relative overflow-hidden rounded-[2rem] border p-5 backdrop-blur-md transition-all duration-500 hover:scale-[1.02] ${activeTimeline === idx
+                                        ? 'border-cyan-300/40 bg-cyan-400/10 shadow-[0_0_40px_rgba(34,211,238,0.15)] animate-[civilizationBreath_3s_ease-in-out_infinite]'
+                                        : 'border-white/10 bg-white/[0.03] group-hover:translate-x-2 group-hover:border-cyan-400/20 group-hover:bg-cyan-400/[0.05]'} ${timelineTransition && activeTimeline === idx
+                                        ? 'scale-[1.04] brightness-125 animate-[civilizationShift_0.7s_ease]'
+                                        : ''}` },
+                                    React.createElement("div", { className: "pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100", style: {
+                                            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+                                            animation: 'scanSweep 1.2s ease',
+                                        } }),
+                                    React.createElement("div", { className: "mb-2 text-xs uppercase tracking-[0.2em] text-neutral-500 group-hover:text-cyan-200" },
+                                        "STAGE ",
+                                        String(idx + 1).padStart(2, '0')),
+                                    React.createElement("div", { className: "mb-2 text-2xl font-semibold transition-all duration-300 group-hover:tracking-[0.08em]" }, item.title),
+                                    React.createElement("div", { className: `grid transition-all duration-500 ease-out ${activeTimeline === idx
+                                            ? 'grid-rows-[1fr] opacity-100 mt-4'
+                                            : 'grid-rows-[0fr] opacity-0'}` },
+                                        React.createElement("div", { className: "overflow-hidden" },
+                                            React.createElement("div", { className: `rounded-2xl border border-cyan-400/10 bg-black/30 p-4 text-sm leading-relaxed text-cyan-100 transition-all duration-500 ${activeTimeline === idx
+                                                    ? 'translate-y-0 blur-0'
+                                                    : '-translate-y-4 blur-md'}` },
+                                                React.createElement("div", { className: "mb-2 text-[10px] uppercase tracking-[0.25em] text-cyan-300/70" }, "\u6587\u660E\u72C0\u614B Civilization Status"),
+                                                item.message)))))))))))),
+            mode === 'archive' && (React.createElement("div", { className: "min-h-screen px-6 py-20" },
+                React.createElement("div", { className: "mx-auto max-w-5xl" },
+                    React.createElement("div", { className: "mb-12 flex items-center justify-between" },
+                        React.createElement("h1", { className: "text-5xl font-black" }, "Human Civilization Modules"),
+                        React.createElement("button", { onClick: () => switchMode('default'), className: "rounded-2xl border border-white/10 bg-black/30 px-6 py-3 hover:bg-white/10" }, "Return")),
+                    React.createElement("div", { className: "flex flex-col gap-4" }, archiveTopics.map((topic) => (React.createElement("button", { key: topic.title, onClick: () => openTopic(topic), className: "rounded-[2rem] border border-cyan-400/20 bg-cyan-400/5 p-6 text-left hover:bg-cyan-400/10" },
+                        React.createElement("div", { className: "mb-2 text-xs uppercase tracking-[0.2em] text-cyan-300" }, "MODULE"),
+                        React.createElement("h3", { className: "mb-3 text-lg font-bold" }, topic.title),
+                        React.createElement("p", { className: "text-sm text-neutral-300" }, topic.desc)))))))),
+            mode === 'mirror' && (React.createElement("div", { className: "flex min-h-screen items-center justify-center px-6 py-20" },
+                React.createElement("div", { className: "w-full max-w-4xl rounded-[2rem] border border-red-400/20 bg-red-500/5 p-10 backdrop-blur-md" },
+                    React.createElement("div", { className: "mb-6 flex items-center justify-between gap-4" },
+                        React.createElement("div", null,
+                            React.createElement("p", { className: "mb-3 text-xs uppercase tracking-[0.3em] text-red-300" }, "Psychological Reflection Interface"),
+                            React.createElement("h1", { className: "text-4xl font-black md:text-6xl" }, "Mirror Test")),
+                        React.createElement("button", { onClick: () => switchMode('default'), className: "rounded-2xl border border-white/10 bg-black/30 px-6 py-3 backdrop-blur-sm hover:bg-white/10" }, "Return")),
+                    React.createElement("div", { className: `rounded-[2rem] border border-red-400/20 bg-black/30 p-8 transition-all duration-500 ${isMirrorTransitioning
+                            ? 'translate-y-6 scale-[0.97] opacity-0 blur-md'
+                            : 'translate-y-0 scale-100 opacity-100 blur-0'}` },
+                        React.createElement("div", { className: "mb-5 flex items-center justify-between gap-4" },
+                            React.createElement("div", { className: "text-xs uppercase tracking-[0.3em] text-red-300/70" },
+                                "Psychological Probe #",
+                                String(currentMirrorQuestion + 1).padStart(2, '0')),
+                            React.createElement("div", { className: "rounded-full border border-red-400/20 bg-red-500/10 px-4 py-2 text-xs text-red-200" },
+                                currentMirrorQuestion + 1,
+                                " / ",
+                                mirrorQuestions.length)),
+                        React.createElement("h2", { className: "mb-8 text-2xl font-black leading-tight md:text-4xl" }, mirrorQuestions[currentMirrorQuestion].question),
+                        React.createElement("div", { className: "mb-8 flex flex-wrap gap-4" },
+                            React.createElement("button", { onClick: () => {
+                                    setMirrorAnalysis(mirrorQuestions[currentMirrorQuestion].yes);
+                                    setHasAnsweredMirrorQuestion(true);
+                                }, className: "rounded-2xl border border-red-400/30 bg-red-500/20 px-6 py-3 hover:bg-red-500/30" }, "Yes"),
+                            React.createElement("button", { onClick: () => {
+                                    setMirrorAnalysis(mirrorQuestions[currentMirrorQuestion].no);
+                                    setHasAnsweredMirrorQuestion(true);
+                                }, className: "rounded-2xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10" }, "No")),
+                        React.createElement("div", { className: "rounded-[2rem] border border-white/10 bg-black/40 p-6 text-lg leading-relaxed text-neutral-300 backdrop-blur-md" },
+                            React.createElement("div", { className: "mb-3 text-xs uppercase tracking-[0.25em] text-red-300/60" }, "SYSTEM ANALYSIS"),
+                            mirrorAnalysis),
+                        hasAnsweredMirrorQuestion && (React.createElement("div", { className: "mt-8 flex justify-end" },
+                            React.createElement("button", { onClick: () => nextMirrorQuestion(), className: "rounded-2xl border border-red-400/30 bg-red-500/10 px-6 py-3 text-sm uppercase tracking-[0.2em] text-red-100 hover:bg-red-500/20" }, "Next Question \u2192"))))))))));
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));root.render(React.createElement(HomoExeUI));</script></body></html>
